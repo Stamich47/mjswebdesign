@@ -1,4 +1,5 @@
 // MJS Web Design - JavaScript
+console.log("🚀 MJS Web Design JavaScript loaded successfully!");
 
 // Add structured data (JSON-LD) for SEO
 function addStructuredData() {
@@ -81,6 +82,8 @@ function addStructuredData() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
+  console.log("📄 DOM Content Loaded - Initializing features...");
+
   // Add structured data
   addStructuredData();
 
@@ -155,6 +158,12 @@ document.addEventListener("DOMContentLoaded", function () {
   const logo = document.querySelector(".site-branding .logo");
   let lastScrollTop = 0;
   let currentLogoSrc = "./assets/logo_white.png"; // Track current logo
+
+  console.log("🎯 Header scroll handler initialized", {
+    header,
+    heroSection,
+    logo,
+  });
 
   window.addEventListener("scroll", function () {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -542,20 +551,3 @@ document.addEventListener("DOMContentLoaded", function () {
   );
   console.log("%c📞 (424) 225-1294", "color: #0274be; font-size: 14px;");
 });
-
-// Service worker registration (optional - for PWA features)
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", function () {
-    navigator.serviceWorker
-      .register("/sw.js")
-      .then(function (registration) {
-        console.log(
-          "ServiceWorker registration successful with scope: ",
-          registration.scope
-        );
-      })
-      .catch(function (err) {
-        console.log("ServiceWorker registration failed: ", err);
-      });
-  });
-}
