@@ -149,17 +149,52 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Header scroll effect
+  // Header scroll effect with dynamic background and logo
   const header = document.querySelector(".site-header");
+  const heroSection = document.querySelector(".hero-section");
+  const logo = document.querySelector(".site-branding .logo");
   let lastScrollTop = 0;
+  let currentLogoSrc = "./assets/logo_white.png"; // Track current logo
 
   window.addEventListener("scroll", function () {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const heroHeight = heroSection ? heroSection.offsetHeight : 800;
 
+    // Calculate scroll progress through hero section (0 to 1)
+    const heroScrollProgress = Math.min(scrollTop / (heroHeight - 100), 1);
+
+    // Add/remove scrolled class
     if (scrollTop > 100) {
       header.classList.add("scrolled");
     } else {
       header.classList.remove("scrolled");
+    }
+
+    // Set CSS custom property for background opacity transition
+    header.style.setProperty("--scroll-progress", heroScrollProgress);
+
+    // Dynamic logo switching based on scroll progress
+    if (logo) {
+      let newLogoSrc;
+
+      if (heroScrollProgress < 0.5) {
+        // Use white logo when navbar is dark (top of hero section)
+        newLogoSrc = "./assets/logo_white.png";
+      } else {
+        // Use regular logo when navbar is light (scrolled past hero)
+        newLogoSrc = "./assets/logo.png";
+      }
+
+      // Only change logo if it's different from current one
+      if (newLogoSrc !== currentLogoSrc) {
+        // Brief fade out, change logo, fade back in
+        logo.style.opacity = "0.7";
+        setTimeout(() => {
+          logo.src = newLogoSrc;
+          currentLogoSrc = newLogoSrc;
+          logo.style.opacity = "1";
+        }, 100);
+      }
     }
 
     lastScrollTop = scrollTop;
