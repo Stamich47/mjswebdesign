@@ -139,7 +139,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (targetElement) {
         const headerHeight =
           document.querySelector(".site-header").offsetHeight;
-        const targetPosition = targetElement.offsetTop - headerHeight - 20;
+        const targetPosition = targetElement.offsetTop - headerHeight + 30;
 
         window.scrollTo({
           top: targetPosition,
@@ -464,6 +464,37 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
+
+  // Active navigation state
+  function updateActiveNavLink() {
+    const sections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll(".nav-link, .mobile-nav-link");
+
+    let current = "";
+    const headerHeight = document.querySelector(".site-header").offsetHeight;
+    const scrollPos = window.scrollY + headerHeight + 30; // Match smooth scroll offset
+
+    sections.forEach((section) => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+
+      if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+        current = section.getAttribute("id");
+      }
+    });
+
+    navLinks.forEach((link) => {
+      link.classList.remove("active");
+      if (link.getAttribute("href") === `#${current}`) {
+        link.classList.add("active");
+      }
+    });
+  }
+
+  // Update active nav on scroll
+  window.addEventListener("scroll", updateActiveNavLink);
+  // Set initial active state
+  updateActiveNavLink();
 
   // Console welcome message
   console.log(
