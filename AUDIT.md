@@ -17,8 +17,7 @@ The MJS Web Design professional website is technically robust, featuring high-qu
 
 ## 2. SEO & Technical Performance
 
-- **Image Optimization:**
-  - Convert existing `.jpg` assets to `.webp` to improve loading speeds and LCP scores.
+- [x] **Image Optimization:** Convert existing `.jpg` assets to `.webp` to improve loading speeds and LCP scores. (Resolved: Implemented <picture> fallbacks)
 - **Google Analytics:**
   - Verify Tag ID `G-0GMM04GFVK` is correct for production analytics.
 - **Structured Data:**
@@ -30,18 +29,17 @@ The MJS Web Design professional website is technically robust, featuring high-qu
 
 - **Social Proof (High Priority):**
   - Add a **Testimonials** section to build credibility with new visitors.
-- **Portfolio Depth:**
-  - Consider adding a "Process" or "Tech Stack" section to demo items to highlight the engineering approach used.
+- [x] **Floating Quick Contact:** Implemented a non-obtrusive floating contact button for high-speed mobile access. (Resolved: Phone and Email icons one tap away)
+- [x] **Portfolio Depth:** Add a "Tech Stack" feature to demo items to highlight the engineering approach used. (Resolved: Added tech-specific tags to portfolio items)
 - **FAQ Section:**
   - Provide answers to common questions regarding timelines, technologies used, and revisions.
-- **Navigational Fix:**
-  - Update the logo link from `#` to `./index.html` to ensure proper root navigation.
+- [x] **Navigational Fix:** Update the logo link from `#` to `./index.html` to ensure proper root navigation. (Resolved)
 
 ---
 
 ## 4. Accessibility Check
 
-- **Skip Link:** Add a "Skip to Content" link for keyboard and screen reader accessibility.
+- [x] **Skip Link:** Add a "Skip to Content" link for keyboard and screen reader accessibility. (Resolved)
 - **Semantic HTML:** Currently very strong; maintain the current use of `<header>`, `<main>`, and `<section>` tags.
 - **Focus States:** The custom focus styles are a great touch—maintain these as you add new interactive elements.
 
@@ -49,7 +47,7 @@ The MJS Web Design professional website is technically robust, featuring high-qu
 
 ## 5. Proposed Next Steps
 
-1. Resolve the name branding discrepancy.
+1. Resolve the name branding discrepancy. (Done)
 2. Implement a Testimonials section below the Portfolio.
 3. Optimize images for performance.
-4. Add a "Skip to Content" accessibility feature.
+4. Add a "Skip to Content" accessibility feature. (Done)

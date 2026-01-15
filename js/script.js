@@ -154,7 +154,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const heroSection = document.querySelector(".hero-section");
   const logo = document.querySelector(".site-branding .logo");
   let lastScrollTop = 0;
-  let currentLogoSrc = "./assets/logo_white.png"; // Track current logo
+  let currentLogoSrc = "./assets/logo_white.webp"; // Track current logo (using webp)
 
   window.addEventListener("scroll", function () {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -179,10 +179,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (heroScrollProgress < 0.5) {
         // Use white logo when navbar is dark (top of hero section)
-        newLogoSrc = "./assets/logo_white.png";
+        newLogoSrc = "./assets/logo_white.webp";
       } else {
         // Use regular logo when navbar is light (scrolled past hero)
-        newLogoSrc = "./assets/logo.png";
+        newLogoSrc = "./assets/logo.webp";
       }
 
       // Only change logo if it's different from current one
