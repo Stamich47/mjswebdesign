@@ -24,7 +24,7 @@ function addStructuredData() {
     },
     founder: {
       "@type": "Person",
-      name: "Michael Stamich",
+      name: "Michael Stanford",
     },
     serviceType: "Web Design and Development",
     areaServed: {
