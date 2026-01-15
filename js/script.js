@@ -531,6 +531,29 @@ document.addEventListener("DOMContentLoaded", function () {
   // Set initial active state
   updateActiveNavLink();
 
+  // Floating Quick Contact Search & Scroll behavior
+  const quickContactPill = document.querySelector(".quick-contact-pill");
+
+  if (quickContactPill) {
+    // Hide initially
+    quickContactPill.style.opacity = "0";
+    quickContactPill.style.visibility = "hidden";
+    quickContactPill.style.transform = "translateY(20px)";
+    quickContactPill.style.transition = "all 0.4s ease";
+
+    window.addEventListener("scroll", function () {
+      if (window.scrollY > 300) {
+        quickContactPill.style.opacity = "1";
+        quickContactPill.style.visibility = "visible";
+        quickContactPill.style.transform = "translateY(0)";
+      } else {
+        quickContactPill.style.opacity = "0";
+        quickContactPill.style.visibility = "hidden";
+        quickContactPill.style.transform = "translateY(20px)";
+      }
+    });
+  }
+
   // Console welcome message
   console.log(
     "%cMJS Web Design",
