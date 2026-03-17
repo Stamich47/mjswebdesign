@@ -596,20 +596,32 @@ document.addEventListener("DOMContentLoaded", function () {
   function updateActiveNavLink() {
     const sections = document.querySelectorAll("section[id]");
     const navLinks = document.querySelectorAll(".nav-link, .mobile-nav-link");
+    const header = document.querySelector(".site-header");
 
+    // Query all geometric properties at once to avoid forced reflows
+    const headerHeight = header.offsetHeight;
+    const scrollPos = window.scrollY + headerHeight + 30;
+
+    // Pre-calculate section positions
+    const sectionPositions = Array.from(sections).map((section) => ({
+      id: section.getAttribute("id"),
+      top: section.offsetTop,
+      height: section.offsetHeight,
+    }));
+
+    // Find current section
     let current = "";
-    const headerHeight = document.querySelector(".site-header").offsetHeight;
-    const scrollPos = window.scrollY + headerHeight + 30; // Match smooth scroll offset
-
-    sections.forEach((section) => {
-      const sectionTop = section.offsetTop;
-      const sectionHeight = section.offsetHeight;
-
-      if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
-        current = section.getAttribute("id");
+    for (const sectionPos of sectionPositions) {
+      if (
+        scrollPos >= sectionPos.top &&
+        scrollPos < sectionPos.top + sectionPos.height
+      ) {
+        current = sectionPos.id;
+        break;
       }
-    });
+    }
 
+    // Update nav links
     navLinks.forEach((link) => {
       link.classList.remove("active");
       if (link.getAttribute("href") === `#${current}`) {
