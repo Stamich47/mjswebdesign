@@ -78,6 +78,68 @@ function addStructuredData() {
   script.type = "application/ld+json";
   script.textContent = JSON.stringify(structuredData);
   document.head.appendChild(script);
+
+  // Add FAQ Schema Markup
+  const faqData = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "How long does it take to build a website?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Landing pages typically take 1 week. Multi-page websites take 2-3 weeks depending on complexity. Custom solutions vary based on your specific requirements.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What's included in my project?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Your package includes custom design, responsive mobile development, basic SEO setup, contact forms, and minor revisions. Specific features depend on which package you choose.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Do you offer hosting and maintenance?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes! I offer hosting and maintenance packages starting at $25/month including Cloudflare hosting, free SSL certificates, content updates, and ongoing support.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Can you help with SEO?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Absolutely! All websites come with SEO optimization including meta tags, structured data, mobile optimization, and fast loading speeds. I can also help with local SEO for service-based businesses.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What if I need revisions?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Minor revisions are included in all packages during the development process. After launch, revisions can be added to your maintenance package or billed hourly for custom work.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Do you offer payment plans?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes, I'm happy to discuss payment plans for larger projects. Get in touch to discuss what works best for your budget and timeline.",
+        },
+      },
+    ],
+  };
+
+  // Create and append FAQ schema tag
+  const faqScript = document.createElement("script");
+  faqScript.type = "application/ld+json";
+  faqScript.textContent = JSON.stringify(faqData);
+  document.head.appendChild(faqScript);
 }
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -239,7 +301,7 @@ document.addEventListener("DOMContentLoaded", function () {
           if (response.ok) {
             showNotification(
               "Thank you for your message! I'll get back to you soon.",
-              "success"
+              "success",
             );
             contactForm.reset();
           } else {
@@ -250,7 +312,7 @@ document.addEventListener("DOMContentLoaded", function () {
           console.error("Error:", error);
           showNotification(
             "Sorry, there was an error sending your message. Please try again or contact me directly at michael@mjswebdesign.com",
-            "error"
+            "error",
           );
         })
         .finally(() => {
@@ -369,7 +431,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Observe elements for animation
   const animateElements = document.querySelectorAll(
-    ".service-card, .service-detail-item, .about-content, .pricing-card"
+    ".service-card, .service-detail-item, .about-content, .pricing-card",
   );
   animateElements.forEach((el) => {
     observer.observe(el);
@@ -428,7 +490,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (value.length >= 6) {
         value = `(${value.slice(0, 3)}) ${value.slice(3, 6)}-${value.slice(
           6,
-          10
+          10,
         )}`;
       } else if (value.length >= 3) {
         value = `(${value.slice(0, 3)}) ${value.slice(3)}`;
@@ -478,7 +540,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Add focus trap for mobile menu
   if (mobileNavigation) {
     const focusableElements = mobileNavigation.querySelectorAll(
-      "a, button, input, textarea, select"
+      "a, button, input, textarea, select",
     );
     const firstFocusable = focusableElements[0];
     const lastFocusable = focusableElements[focusableElements.length - 1];
@@ -499,6 +561,36 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
+
+  // FAQ Accordion Functionality
+  const faqQuestions = document.querySelectorAll(".faq-question");
+
+  faqQuestions.forEach((question) => {
+    question.addEventListener("click", function () {
+      const faqItem = this.closest(".faq-item");
+      const isActive = faqItem.classList.contains("active");
+
+      // Close all other FAQ items
+      document.querySelectorAll(".faq-item").forEach((item) => {
+        item.classList.remove("active");
+      });
+
+      // Toggle current item if it wasn't already active
+      if (!isActive) {
+        faqItem.classList.add("active");
+      }
+    });
+  });
+
+  // Allow keyboard navigation for FAQ
+  faqQuestions.forEach((question) => {
+    question.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        this.click();
+      }
+    });
+  });
 
   // Active navigation state
   function updateActiveNavLink() {
@@ -557,15 +649,15 @@ document.addEventListener("DOMContentLoaded", function () {
   // Console welcome message
   console.log(
     "%cMJS Web Design",
-    "color: #0274be; font-size: 20px; font-weight: bold;"
+    "color: #0274be; font-size: 20px; font-weight: bold;",
   );
   console.log(
     "%cThanks for checking out the code! If you need a website, feel free to contact me.",
-    "color: #4b4f58; font-size: 14px;"
+    "color: #4b4f58; font-size: 14px;",
   );
   console.log("%c📞 (424) 225-1294", "color: #0274be; font-size: 14px;");
   console.log(
     "%c✉️ michael@mjswebdesign.com",
-    "color: #0274be; font-size: 14px;"
+    "color: #0274be; font-size: 14px;",
   );
 });
