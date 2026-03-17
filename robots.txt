@@ -1,0 +1,12 @@
+# MJS Web Design - robots.txt
+# Allow all search engines to crawl the site
+
+User-agent: *
+Allow: /
+Disallow: /test-js.html
+
+# Sitemap location
+Sitemap: https://www.mjswebdesign.com/sitemap.xml
+
+# Crawl delay (optional - be reasonable with search engine bots)
+Crawl-delay: 1
