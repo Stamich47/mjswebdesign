@@ -65,15 +65,38 @@
     <link rel="apple-touch-icon" href="./assets/favicon.ico" />
 
     <!-- Fonts via jsDelivr CDN (faster than Google Fonts) -->
-    <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fontsource/manrope@5.0.0/index.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-    <link rel="preload" href="https://cdn.jsdelivr.net/npm/@fontsource/plus-jakarta-sans@5.0.0/index.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <link
+      rel="preload"
+      href="https://cdn.jsdelivr.net/npm/@fontsource/manrope@5.0.0/index.css"
+      as="style"
+      onload="
+        this.onload = null;
+        this.rel = 'stylesheet';
+      "
+    />
+    <link
+      rel="preload"
+      href="https://cdn.jsdelivr.net/npm/@fontsource/plus-jakarta-sans@5.0.0/index.css"
+      as="style"
+      onload="
+        this.onload = null;
+        this.rel = 'stylesheet';
+      "
+    />
     <noscript>
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/manrope@5.0.0/index.css" />
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/plus-jakarta-sans@5.0.0/index.css" />
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@fontsource/manrope@5.0.0/index.css"
+      />
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@fontsource/plus-jakarta-sans@5.0.0/index.css"
+      />
     </noscript>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/style.css" media="print" onload="this.media='all'; this.onload=null;" />
+    <noscript><link rel="stylesheet" href="css/style.css" /></noscript>
 
     <!-- Google tag (gtag.js) -->
     <script
