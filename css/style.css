@@ -293,7 +293,9 @@ a:hover {
 }
 
 .logo-link {
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  gap: 12px;
   background: transparent;
   transition: all 0.3s ease;
   border-radius: 8px;
@@ -302,6 +304,18 @@ a:hover {
 
 .logo-link:hover {
   background-color: rgba(2, 116, 190, 0.05);
+}
+
+.logo-text {
+  font-weight: 600;
+  font-size: 16px;
+  color: white;
+  letter-spacing: 0.3px;
+  transition: color 0.3s ease;
+}
+
+.site-header.scrolled .logo-text {
+  color: #0274be;
 }
 
 .main-navigation {
